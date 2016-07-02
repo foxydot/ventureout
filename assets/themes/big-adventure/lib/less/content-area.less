@@ -22,10 +22,53 @@ article.entry {
   margin-bottom: 4rem;
   display: block;
 }
+
 .entry-content{
-  h3{
-    color: @dkgrey;
+  h1{
+    .customserif(3.6);
     font-weight: 700;
+    color: @beige;
+  }
+  h2{
+    .customserif(2.4);
+    font-weight: 500;
+    color: @teal;
+    line-height: 1.25;
+    text-align: left;
+  }
+  h3{
+    .customserif(2.4);
+    font-weight: 500;
+    color: @green;
+    line-height: 1.25;
+    text-align: left;
+  }
+  h4{
+    .customserif(1.8);
+    font-weight: 500;
+    color: @beige;
+    line-height: 1.25;
+    text-align: left;
+    margin-bottom: 0;
+    }
+  h5{
+    font-weight: 700;
+    }
+  h6{
+    font-weight: 500;
+    }
+  pre{}
+  blockquote{
+    float: left;
+    max-width: 33%;
+    margin: 1em 2em 1em 0;
+    background: @teal;
+    color: @white;
+    &:before{
+      content: '';
+    }
+    p{
+    }
   }
 }
 .entry-content .attachment a,
