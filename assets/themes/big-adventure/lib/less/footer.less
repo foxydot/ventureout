@@ -1,0 +1,40 @@
+/*
+Site Footer
+---------------------------------------------------------------------------------------------------- */
+.site-footer{
+  background-color: @beige;
+  color: @white;
+  .customheader(1);
+  text-align: center;
+  padding: 2rem;
+  a {
+    color: @white;
+    &:hover{
+      color: fade(@white,80%);
+    }
+  }
+  .wrap{
+    position: relative;
+    .social, .footer-menu{
+      display: inline-block;
+    } 
+    p {
+      margin-bottom: 0;
+    }
+    .backtotop{
+      position: absolute;
+      right: 0;
+      top: -2em;
+      background-color: @white;
+      border-radius: 0 0 20% 20%;
+      height: 2.4em;
+      width: 2.4em;
+      text-align: center;
+      a{
+        color: @beige;
+        font-size: 2em;
+        line-height: 1;
+      }
+    }
+  }
+}
