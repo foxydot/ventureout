@@ -8347,11 +8347,6 @@ Site Footer
   background-repeat: no-repeat;
   background-size: cover;
 }
-.page-title-area .banner .texturize {
-  background-image: url(../img/bkg-planks-10-8bit.png);
-  background-repeat: repeat;
-  background-position: center top;
-}
 .page-title-area .banner .texturize .gradient {
   background: rgba(0, 191, 179, 0.5);
 }
