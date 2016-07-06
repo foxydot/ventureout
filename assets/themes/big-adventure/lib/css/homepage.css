@@ -15,6 +15,11 @@
 }
 /* Colors */
 /* Neutrals */
+.planktexture {
+  background-image: url(../img/bkg-planks-10-8bit.png);
+  background-repeat: repeat;
+  background-position: center top;
+}
 /* Buttons */
 .button {
   padding: 6px 24px;

@@ -1,18 +1,20 @@
 <?php
 /*
 Plugin Name: MSD Custom CPT
-Description: Custom Post Type Framework plugin
+Description: Custom plugin for MSDLAB
 Author: Catherine Sandrick
-Version: 0.0.2
+Version: 0.0.1
 Author URI: http://msdlab.com
 */
 
 if(!class_exists('WPAlchemy_MetaBox')){
-	include_once (plugin_dir_path(__FILE__).'/lib/wpalchemy/MetaBox.php');
+    if(!include_once (WP_CONTENT_DIR.'/wpalchemy/MetaBox.php'))
+    include_once (plugin_dir_path(__FILE__).'/lib/wpalchemy/MetaBox.php');
 }
 global $wpalchemy_media_access;
 if(!class_exists('WPAlchemy_MediaAccess')){
-	include_once (plugin_dir_path(__FILE__).'/lib/wpalchemy/MediaAccess.php');
+    if(!include_once (WP_CONTENT_DIR.'/wpalchemy/MediaAccess.php'))
+    include_once (plugin_dir_path(__FILE__).'/lib/wpalchemy/MediaAccess.php');
 }
 $wpalchemy_media_access = new WPAlchemy_MediaAccess();
 global $msd_custom;
@@ -86,7 +88,7 @@ if (!class_exists('MSDCustomCPT')) {
         /**
         * PHP 4 Compatible Constructor
         */
-        function MSDLawfirmCPT(){$this->__construct();}
+        function MSDCustomCPT(){$this->__construct();}
         
         /**
         * PHP 5 Constructor
@@ -101,19 +103,19 @@ if (!class_exists('MSDCustomCPT')) {
         	register_activation_hook(__FILE__, array(&$this,'check_requirements'));
         	//get sub-packages
         	requireDir(plugin_dir_path(__FILE__).'/lib/inc');
-           
-            if(class_exists('MSDNewsCPT')){
-                $this->news_class = new MSDNewsCPT();
+            //here are some examples to get started with
+            if(class_exists('MSDTeamCPT')){
+                $this->project_class = new MSDTeamCPT();
                 register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
                 register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
             }
-            if(class_exists('MSDPressCPT')){
-                $this->news_class = new MSDPressCPT();
+            if(class_exists('MSDTeamDisplayCPT')){
+                $this->project_class = new MSDTeamDisplayCPT();
                 register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
                 register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
             }
-            if(class_exists('MSDActivityCPT')){
-                $this->activity_class = new MSDActivityCPT();
+            if(class_exists('MSDTestimonialCPT')){
+                $this->project_class = new MSDTestimonialCPT();
                 register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
                 register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
             }

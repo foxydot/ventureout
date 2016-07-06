@@ -134,26 +134,20 @@ Site Navigation
       background-color: @white;
       border: 1px solid @ltgrey;
       li.menu-item{
-        padding: 0 2rem;
+        padding: 0 1em;
         width: 100%;
         position: relative;
         a{
+          .custombody(1.6);
           background-color: transparent;
           border: 0;
           color: @teal;
-          padding: 1rem 0;
+          padding: 0.5em 0;
           width: 100%;
         }
         .sub-menu{
           left: 0;
           top:0;
-        }
-      }
-      >li.menu-item.menu-item-has-children{
-        >a:after{
-          .fontawesome;
-          content: '\f105';
-          margin: 0 0.5em;
         }
       }
       li.last-child>a{
@@ -165,13 +159,6 @@ Site Navigation
           text-decoration: none;
         }
       }
-    }
-  }
-  .menu>li.menu-item.menu-item-has-children{
-    >a:after{
-      .fontawesome;
-      content: '\f107';
-      margin: 0 0.5em;
     }
   }
   li:hover, li.current-menu-item, li.current-menu-ancestor{
