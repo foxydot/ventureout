@@ -49,6 +49,7 @@ add_action('after_setup_theme','msdlab_add_extra_theme_sidebars', 4); //creates 
 add_filter('widget_text', 'do_shortcode');//shortcodes in widgets
 
 /*** CONTENT ***/
+add_filter( 'edit_post_link', '__return_false' );
 add_filter('genesis_breadcrumb_args', 'msdlab_breadcrumb_args'); //customize the breadcrumb output
 //remove_action('genesis_before_loop', 'genesis_do_breadcrumbs'); //move the breadcrumbs 
 add_filter( 'genesis_post_info', 'sp_post_info_filter' );

@@ -147,6 +147,8 @@ if (!class_exists('MSDTestimonialCPT')) {
                 'length' => false,
                 'slideshow' => false,
                 'terms' => false,
+                'class' => '',
+                'title' => false
             ), $atts ) );
             global $testimonial_info;
             $args = array(
@@ -182,9 +184,8 @@ if (!class_exists('MSDTestimonialCPT')) {
                 $location = $testimonial_info->get_the_value('location')!=''?'<span class="location">'.$testimonial_info->get_the_value('location').'</span> ':'';
                 $bootstrap = $slideshow?'':'col-md-'. 12/$columns .' col-xs-12 ';
                 $testimonial_array[] .= '<div class="'.$bootstrap.'item-wrapper">
-                <div class="logo">'.$thumbnail.do_shortcode('[decoration]').'</div>
-                <div class="attribution">'.$name.$position.$organization.$location.$badge.'</div>
                 <div class="quote">'.$quote.'</div>
+                <div class="attribution">'.$name.$position.$organization.$location.$badge.'</div>
                 </div>';
             }
             if($slideshow){
@@ -217,7 +218,10 @@ if (!class_exists('MSDTestimonialCPT')) {
                 $link_text = is_string($link)?$link:'Read More Testimonials';
                 $ret .= '<div class="col-md-'. 12/$columns .' col-xs-12 link-wrapper"><a href="'.get_post_type_archive_link($this->cpt).'">'.$link_text.'</a></div>';
             }
-            $ret = '<div class="msdlab_testimonial_gallery">'.$ret.'</div>';
+            if($title){
+                $ret = '<h4 class="testimonial-shortcode-title">'. apply_filters('testimonial_shortcode_title_text',$title) .'</h4>' . $ret;
+            }
+            $ret = '<div class="msdlab_testimonial_gallery '.$class.'">'.$ret.'</div>';
             
             return $ret;
         } 
