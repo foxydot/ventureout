@@ -75,6 +75,9 @@
 .sectioned-page-wrapper .section .section-title {
   padding: 0;
 }
+.sectioned-page-wrapper .section .section-title h3 {
+  color: #776e64;
+}
 .sectioned-page-wrapper .section.section-intro {
   padding: 2em 0;
 }
@@ -127,6 +130,7 @@
   color: #776e64;
 }
 .sectioned-page-wrapper .section.section-programs .section-body .wrap .row .section-content {
+  font-size: 0.8em;
   text-align: left;
 }
 .sectioned-page-wrapper .section.section-development {
@@ -143,6 +147,37 @@
   border-bottom: 1px solid #FFF;
   padding: 0.2em;
   margin-bottom: 0.2em;
+}
+.sectioned-page-wrapper .section.section-key-elements .section-body .wrap .row .section-content.column-2 {
+  padding: 3em 0;
+}
+.sectioned-page-wrapper .section.section-key-elements .section-body .wrap .row .section-content.column-3 {
+  padding-top: 210px;
+  text-align: left;
+  color: #FFF;
+}
+.sectioned-page-wrapper .section.section-key-elements .section-body .wrap .row .section-content h4 {
+  color: #FFF;
+  font-size: 1.8em;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  margin-bottom: 0.3em;
+}
+.sectioned-page-wrapper .section.section-team .section-title h3 {
+  font-weight: 700;
+}
+.sectioned-page-wrapper .section.section-testimonials {
+  background-position: top right;
+}
+.sectioned-page-wrapper .section.section-testimonials .section-title h3 {
+  font-weight: 700;
+}
+.sectioned-page-wrapper .section.section-testimonials .section-body .wrap .row .section-content {
+  text-align: left;
+  color: #FFF;
+  font-size: 0.8em;
 }
 @media only screen and (max-width: 980px) {
   nav.homepage-top .menu li a {

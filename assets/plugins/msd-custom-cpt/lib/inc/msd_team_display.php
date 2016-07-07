@@ -21,6 +21,7 @@ if (!class_exists('MSDTeamDisplay')) {
                      
             //Filters
             add_filter( 'genesis_attr_headshot', array(&$this,'msdlab_headshot_context_filter' ));
+            add_shortcode('team-members',array(&$this,'team_members_shortcode_handler'));
         }
  
         function get_team_member_by_practice($practice_area) {
@@ -282,6 +283,20 @@ if (!class_exists('MSDTeamDisplay')) {
         
             $jobtitle = sprintf( '<h2 class="entry-subtitle">%s</h2>', apply_filters( 'genesis_post_title_text', $jobtitle ) );
             echo apply_filters( 'genesis_post_title_output', $jobtitle ) . "\n";
+        }
+        function team_members_shortcode_handler($atts){
+            extract( shortcode_atts( array(
+                'random' => false,
+                'count' => 1,
+                'practice_area' => false,
+            ), $atts ) );
+            if($practice_area){
+                $list = get_team_member_by_practice($practice_area);
+            } else {
+                $list = get_all_team_members();
+            }
+            $ret = "Display Team Member Profiles Here.";
+            return $ret;
         }
   } //End Class
 } //End if class exists statement

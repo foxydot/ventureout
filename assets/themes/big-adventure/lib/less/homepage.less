@@ -9,6 +9,9 @@
     background-size: cover;
     .section-title{
       padding: 0;
+      h3{
+        color: @beige;
+      }
     }
   }
   .section.section-intro{
@@ -68,6 +71,7 @@
       .wrap{
         .row{
           .section-content{
+            font-size: 0.8em;
             text-align: left;
           }
         }
@@ -90,6 +94,59 @@
               padding: 0.2em;
               margin-bottom: 0.2em;
             }
+          }
+        }
+      }
+    }
+  }
+  .section.section-key-elements{
+    .section-body{
+      .wrap{
+        .row{
+          .section-content{
+            &.column-2{
+              padding: 3em 0;
+            }
+            &.column-3{
+              padding-top: 210px;
+              text-align: left;
+              color: @white;
+            }
+            h4{
+              color: @white;
+              font-size: 1.8em;
+              font-weight: 500;
+              text-transform: uppercase;
+              text-decoration: none;
+              line-height: 1;
+              margin-bottom: 0.3em;
+            }
+          }
+        }
+      }
+    }
+  }
+  .section.section-team{
+    .section-title{
+      h3{
+        font-weight: 700;
+      }
+    }
+  }
+  .section.section-testimonials{
+    background-position: top right;
+    .section-title{
+      h3{
+        font-weight: 700;
+      }
+    }
+    .section-body{
+      .wrap{
+        .row{
+          .section-content{
+            text-align: left;
+            color: @white;
+            font-size: 0.8em;
           }
         }
       }
