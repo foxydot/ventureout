@@ -63,3 +63,9 @@ function msd_insert_custom_image_sizes( $sizes ) {
 }
 }
 add_filter( 'image_size_names_choose', 'msd_insert_custom_image_sizes' );
+
+if(class_exists('MSDTeamDisplay')){
+    function msdlab_add_headshot(){
+        return MSDTeamDisplay::msd_add_team_member_headshot();
+    }
+}

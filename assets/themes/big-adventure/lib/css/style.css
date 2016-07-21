@@ -8515,6 +8515,10 @@ Site Footer
 .social-media a.fa-rss:hover {
   background-color: #F37D2A;
 }
+section.headshot.alignleft {
+  margin-right: 2em;
+  margin-bottom: 0.5em;
+}
 .nav-responsive ul,
 .nav-responsive li,
 .nav-responsive li a {

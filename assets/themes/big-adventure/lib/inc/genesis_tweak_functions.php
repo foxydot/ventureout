@@ -255,6 +255,24 @@ function msdlab_do_title_area(){
 function msdlab_do_section_title(){
     if(is_front_page()){
         //add_action('genesis_entry_header','genesis_do_post_title',5);
+    } elseif(is_cpt('team_member')){
+        global $post;
+        $teampage = get_page_by_path('our-team');
+        remove_action('genesis_entry_header','genesis_do_post_title',10);
+        add_action('genesis_entry_content','msdlab_add_headshot', 6);
+        $title = apply_filters( 'genesis_post_title_text', $post->post_title );//* Wrap in H1 on singular pages
+        $background = strlen(msdlab_get_thumbnail_url($teampage->ID,'full'))>0?' style="background-image:url('.msdlab_get_thumbnail_url($teampage->ID,'full').')"':'';
+        print '<div class="banner clearfix"'.$background.'>';
+        print '<div class="texturize">';
+        print '<div class="gradient">';
+        print '<div class="wrap">';
+        print '<h2 class="section-title">';
+        print $title;
+        print '</h2>';
+        print '</div>';
+        print '</div>';
+        print '</div>';
+        print '</div>';
     } elseif(is_page()){
         global $post;
         $myid = $post->ID;
@@ -277,7 +295,7 @@ function msdlab_do_section_title(){
     } elseif(is_home() || is_single()) {
         $blog_home = get_post(get_option( 'page_for_posts' ));
         $title = apply_filters( 'genesis_post_title_text', $blog_home->post_title );//* Wrap in H1 on singular pages
-        $background = strlen(msdlab_get_thumbnail_url($myid,'full'))>0?' style="background-image:url('.msdlab_get_thumbnail_url($blog_home->ID,'full').')"':'';
+        $background = strlen(msdlab_get_thumbnail_url($blog_home->ID,'full'))>0?' style="background-image:url('.msdlab_get_thumbnail_url($blog_home->ID,'full').')"':'';
         print '<div class="banner clearfix"'.$background.'>';
         print '<div class="texturize">';
         print '<div class="gradient">';
