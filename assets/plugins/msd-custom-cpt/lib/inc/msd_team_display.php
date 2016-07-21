@@ -22,6 +22,7 @@ if (!class_exists('MSDTeamDisplay')) {
             //Filters
             add_filter( 'genesis_attr_headshot', array(&$this,'msdlab_headshot_context_filter' ));
             add_shortcode('team-members',array(&$this,'team_members_shortcode_handler'));
+            add_shortcode('team_members',array(&$this,'team_members_shortcode_handler'));
         }
  
         function get_team_member_by_practice($practice_area) {
@@ -60,11 +61,10 @@ if (!class_exists('MSDTeamDisplay')) {
         }     
         
         function team_display($team,$attr = array()){
-            global $post,$msd_custom,$contact_info,$primary_practice_area,$jobtitle_metabox;
+            global $post,$msd_custom,$contact_info_metabox,$jobtitle_metabox;
             extract($attr);
             $headshot = get_the_post_thumbnail($team->ID,'headshot-md');
             $terms = wp_get_post_terms($team->ID,'practice_area');
-            $primary_practice_area->the_meta($team->ID);
             $jobtitle_metabox->the_meta($team->ID);
             $practice_areas = '';
             if(count($terms)>0){
@@ -76,30 +76,30 @@ if (!class_exists('MSDTeamDisplay')) {
             }
             $mini_bio = msdlab_excerpt($team->ID);
             $team_contact_info = '';
-            $contact_info->the_meta($team->ID);
-            $contact_info->the_field('_team_member_phone');
-            if($contact_info->get_the_value() != ''){ 
-                $team_contact_info .= '<li class="phone"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span>'.msd_str_fmt($contact_info->get_the_value(),'phone').'</li>';
+            $contact_info_metabox->the_meta($team->ID);
+            $contact_info_metabox->the_field('_team_member_phone');
+            if($contact_info_metabox->get_the_value() != ''){ 
+                $team_contact_info .= '<li class="phone"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span>'.msd_str_fmt($contact_info_metabox->get_the_value(),'phone').'</li>';
             } 
             
-            $contact_info->the_field('_team_member_mobile');
-            if($contact_info->get_the_value() != ''){
-                $team_contact_info .= '<li class="mobile"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-mobile-phone fa-stack-1x fa-inverse"></i></span> '.msd_str_fmt($contact_info->get_the_value(),'phone').'</li>';
+            $contact_info_metabox->the_field('_team_member_mobile');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="mobile"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-mobile-phone fa-stack-1x fa-inverse"></i></span> '.msd_str_fmt($contact_info_metabox->get_the_value(),'phone').'</li>';
             }
             
-            $contact_info->the_field('_team_member_linked_in');
-            if($contact_info->get_the_value() != ''){
-                $team_contact_info .= '<li class="linkedin"><a href="'.$contact_info->get_the_value().'"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i></span> Connect</a></li>';
+            $contact_info_metabox->the_field('_team_member_linked_in');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="linkedin"><a href="'.$contact_info_metabox->get_the_value().'"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i></span> Connect</a></li>';
             }
             
-            $contact_info->the_field('_team_member_bio_sheet');
-            if($contact_info->get_the_value() != ''){
-                $team_contact_info .= '<li class="vcard"><a href="'.$contact_info->get_the_value().'"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-download-alt fa-stack-1x fa-inverse"></i></span> Download Bio</a></li>';
+            $contact_info_metabox->the_field('_team_member_bio_sheet');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="vcard"><a href="'.$contact_info_metabox->get_the_value().'"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-download-alt fa-stack-1x fa-inverse"></i></span> Download Bio</a></li>';
             }
             
-            $contact_info->the_field('_team_member_email');
-            if($contact_info->get_the_value() != ''){
-                $team_contact_info .= '<li class="email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span> '.msd_str_fmt($contact_info->get_the_value(),'email').'</li>';
+            $contact_info_metabox->the_field('_team_member_email');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span> '.msd_str_fmt($contact_info_metabox->get_the_value(),'email').'</li>';
             }
             $teamstr = '
             <a class="team-member '.$practice_areas.' '.$team->post_name.'" href="'.get_post_permalink($team->ID).'">
@@ -113,6 +113,64 @@ if (!class_exists('MSDTeamDisplay')) {
             $teamstr .= '
                 </div>
             </a>';
+            return $teamstr;
+    }   
+        function team_display_full($team,$attr = array()){
+            global $post,$msd_custom,$contact_info_metabox,$jobtitle_metabox;
+            extract($attr);
+            $headshot = get_the_post_thumbnail($team->ID,'headshot-md');
+            $terms = wp_get_post_terms($team->ID,'practice_area');
+            $jobtitle_metabox->the_meta($team->ID);
+            $practice_areas = '';
+            if(count($terms)>0){
+                foreach($terms AS $term){
+                    $practice_areas[] = $term->slug;
+                }
+                
+                $practice_areas = implode(' ', $practice_areas);
+            }
+            $mini_bio = msdlab_excerpt($team->ID);
+            $team_contact_info = '';
+            $contact_info_metabox->the_meta($team->ID);
+            $contact_info_metabox->the_field('_team_member_phone');
+            if($contact_info_metabox->get_the_value() != ''){ 
+                $team_contact_info .= '<li class="phone"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span>'.msd_str_fmt($contact_info_metabox->get_the_value(),'phone').'</li>';
+            } 
+            
+            $contact_info_metabox->the_field('_team_member_mobile');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="mobile"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-mobile-phone fa-stack-1x fa-inverse"></i></span> '.msd_str_fmt($contact_info_metabox->get_the_value(),'phone').'</li>';
+            }
+            
+            $contact_info_metabox->the_field('_team_member_linked_in');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="linkedin"><a href="'.$contact_info_metabox->get_the_value().'"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i></span> Connect</a></li>';
+            }
+            
+            $contact_info_metabox->the_field('_team_member_bio_sheet');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="vcard"><a href="'.$contact_info_metabox->get_the_value().'"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-download-alt fa-stack-1x fa-inverse"></i></span> Download Bio</a></li>';
+            }
+            
+            $contact_info_metabox->the_field('_team_member_email');
+            if($contact_info_metabox->get_the_value() != ''){
+                $team_contact_info .= '<li class="email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span> '.msd_str_fmt($contact_info_metabox->get_the_value(),'email').'</li>';
+            }
+            $teamstr = '
+            <section class="team-member '.$practice_areas.' '.$team->post_name.'" href="'.get_post_permalink($team->ID).'">
+                <div class="headshot">
+                    '.$headshot.'
+                </div>
+                <div class="info">
+                    <h4>'.$team->post_title.'</h4>
+                    <h5>'.$jobtitle_metabox->get_the_value('jobtitle').'</h5>
+                    ';
+            $teamstr .= '
+                </div>
+                <div class="bio">
+                    '.apply_filters('the_content',$team->post_content).'
+                </div>
+            </section>';
             return $teamstr;
     }   
         
@@ -165,7 +223,7 @@ if (!class_exists('MSDTeamDisplay')) {
         }
         
         function msd_team_member_contact_info(){
-            global $post,$contact_info;
+            global $post,$contact_info_metabox;
             $fields = array(
                     'phone' => 'phone',
                     'mobile' => 'mobile-phone',
@@ -175,29 +233,29 @@ if (!class_exists('MSDTeamDisplay')) {
             );
             ?>
             <ul class="team-member-contact-info">
-                <?php $contact_info->the_field('_team_phone'); ?>
-                <?php if($contact_info->get_the_value() != ''){ ?>
-                    <li class="phone"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span> <?php //print msd_str_fmt($contact_info->get_the_value(),'phone'); ?></li>
+                <?php $contact_info_metabox->the_field('_team_phone'); ?>
+                <?php if($contact_info_metabox->get_the_value() != ''){ ?>
+                    <li class="phone"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span> <?php //print msd_str_fmt($contact_info_metabox->get_the_value(),'phone'); ?></li>
                 <?php } ?>
                 
-                <?php $contact_info->the_field('_team_mobile'); ?>
-                <?php if($contact_info->get_the_value() != ''){ ?>
-                    <li class="mobile"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-mobile-phone fa-stack-1x fa-inverse"></i></span> <?php //print msd_str_fmt($contact_info->get_the_value(),'phone'); ?></li>
+                <?php $contact_info_metabox->the_field('_team_mobile'); ?>
+                <?php if($contact_info_metabox->get_the_value() != ''){ ?>
+                    <li class="mobile"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-mobile-phone fa-stack-1x fa-inverse"></i></span> <?php //print msd_str_fmt($contact_info_metabox->get_the_value(),'phone'); ?></li>
                 <?php } ?>
                 
-                <?php $contact_info->the_field('_team_linked_in'); ?>
-                <?php if($contact_info->get_the_value() != ''){ ?>
-                    <li class="linkedin"><a href="<?php print $contact_info->get_the_value(); ?>"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i></span></a></li>
+                <?php $contact_info_metabox->the_field('_team_linked_in'); ?>
+                <?php if($contact_info_metabox->get_the_value() != ''){ ?>
+                    <li class="linkedin"><a href="<?php print $contact_info_metabox->get_the_value(); ?>"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin-square fa-stack-1x fa-inverse"></i></span></a></li>
                 <?php } ?>
                 
-                <?php $contact_info->the_field('_team_bio_sheet'); ?>
-                <?php if($contact_info->get_the_value() != ''){ ?>
-                    <li class="vcard"><a href="<?php print $contact_info->get_the_value(); ?>"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-download-alt fa-stack-1x fa-inverse"></i></span></a></li>
+                <?php $contact_info_metabox->the_field('_team_bio_sheet'); ?>
+                <?php if($contact_info_metabox->get_the_value() != ''){ ?>
+                    <li class="vcard"><a href="<?php print $contact_info_metabox->get_the_value(); ?>"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-download-alt fa-stack-1x fa-inverse"></i></span></a></li>
                 <?php } ?>
                 
-                <?php $contact_info->the_field('_team_email'); ?>
-                <?php if($contact_info->get_the_value() != ''){ ?>
-                    <li class="email"><a href="mailto:<?php print antispambot($contact_info->get_the_value());?>" class="email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span> <?php //print msd_str_fmt($contact_info->get_the_value(),'email'); ?></a></li>
+                <?php $contact_info_metabox->the_field('_team_email'); ?>
+                <?php if($contact_info_metabox->get_the_value() != ''){ ?>
+                    <li class="email"><a href="mailto:<?php print antispambot($contact_info_metabox->get_the_value());?>" class="email"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span> <?php //print msd_str_fmt($contact_info_metabox->get_the_value(),'email'); ?></a></li>
                 <?php } ?>
             </ul>
             <?php
@@ -289,13 +347,23 @@ if (!class_exists('MSDTeamDisplay')) {
                 'random' => false,
                 'count' => 1,
                 'practice_area' => false,
+                'full' => false
             ), $atts ) );
             if($practice_area){
-                $list = get_team_member_by_practice($practice_area);
+                $team = $this->get_team_member_by_practice($practice_area);
             } else {
-                $list = get_all_team_members();
+                $team = $this->get_all_team_members();
             }
-            $ret = "Display Team Member Profiles Here.";
+            
+            $ret = '<div id="team-members">';
+            foreach($team AS $team_member){
+                if($full){
+                    $ret .= $this->team_display_full($team_member);
+                } else {
+                    $ret .= $this->team_display($team_member);
+                }
+            }
+            $ret .= '</div>';
             return $ret;
         }
   } //End Class
