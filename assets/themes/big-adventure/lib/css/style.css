@@ -7338,11 +7338,15 @@ Site Navigation
   width: 100%;
 }
 .nav-primary li.menu-item .sub-menu li.menu-item .sub-menu {
-  left: 0;
+  position: absolute;
+  left: -999px;
   top: 0;
 }
 .nav-primary li.menu-item .sub-menu li.last-child > a {
   border: 0;
+}
+.nav-primary li.menu-item .sub-menu li:hover > .sub-menu {
+  left: 0px;
 }
 .nav-primary li.menu-item .sub-menu li:hover > a {
   color: #b5bd00;

@@ -146,7 +146,8 @@ Site Navigation
           width: 100%;
         }
         .sub-menu{
-          left: 0;
+          position: absolute;
+          left: -999px;
           top:0;
         }
       }
@@ -154,6 +155,9 @@ Site Navigation
         border: 0;
       }
       li:hover{
+        >.sub-menu{
+          left: 0px;
+        }
         &>a{
           color: @green;
           text-decoration: none;
