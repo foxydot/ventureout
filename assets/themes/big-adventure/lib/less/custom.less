@@ -81,26 +81,6 @@
   }
 }
 
-.text-sizer{
-  display: block;
-  z-index: 90;
-  color: @medgrey;
-  text-align: right;
-  div{
-    border: 1px solid @ltgrey;
-    background: fade(@white,80%);
-    width: auto;
-    padding: 0.5em 1em;
-    float: right;
-    i{
-      margin-left: 0.5em;
-      padding: 0.5em;
-      color: @medgrey;
-      cursor: pointer;
-    }
-  }
-}
-
 .msd-fa, .msd-icon{
   &.block{
     display: block;
@@ -238,6 +218,7 @@
 section.headshot.alignleft{
   margin-right: 2em;
   margin-bottom: 0.5em;
+  float: none;
 }
 .team-members.full{
   section.team-member{
@@ -247,5 +228,29 @@ section.headshot.alignleft{
       float: left;
       margin-right: 2em;
     }
+    ul.contact-info{
+      li{
+        list-style: none outside none;
+        i{
+          margin-right: 1em;
+        }
+      }
+    }
   }
+}
+.single-team_member{
+  .team-sidebar{
+    float: left;
+    width: 33%;
+  }
+    ul.team-member-contact-info{
+      display: block;
+      margin: 1em 0;
+      li{
+        list-style: none outside none;
+        i{
+          margin-right: 1em;
+        }
+      }
+    }
 }

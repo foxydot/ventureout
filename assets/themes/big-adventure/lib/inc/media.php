@@ -66,6 +66,10 @@ add_filter( 'image_size_names_choose', 'msd_insert_custom_image_sizes' );
 
 if(class_exists('MSDTeamDisplay')){
     function msdlab_add_headshot(){
-        return MSDTeamDisplay::msd_add_team_member_headshot();
+        ob_start();
+        MSDTeamDisplay::msd_add_team_member_headshot();
+        MSDTeamDisplay::msd_team_member_contact_info();
+        $ret = ob_get_clean();
+        print '<section class="team-sidebar">'.$ret.'</section>';
     }
 }

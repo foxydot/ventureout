@@ -8368,25 +8368,6 @@ Site Footer
   font-size: 14px;
   width: 98%;
 }
-.text-sizer {
-  display: block;
-  z-index: 90;
-  color: #404040;
-  text-align: right;
-}
-.text-sizer div {
-  border: 1px solid #D4D4D6;
-  background: rgba(255, 255, 255, 0.8);
-  width: auto;
-  padding: 0.5em 1em;
-  float: right;
-}
-.text-sizer div i {
-  margin-left: 0.5em;
-  padding: 0.5em;
-  color: #404040;
-  cursor: pointer;
-}
 .msd-fa.block,
 .msd-icon.block {
   display: block;
@@ -8518,6 +8499,7 @@ Site Footer
 section.headshot.alignleft {
   margin-right: 2em;
   margin-bottom: 0.5em;
+  float: none;
 }
 .team-members.full section.team-member {
   display: block;
@@ -8526,6 +8508,26 @@ section.headshot.alignleft {
 .team-members.full section.team-member div.headshot {
   float: left;
   margin-right: 2em;
+}
+.team-members.full section.team-member ul.contact-info li {
+  list-style: none outside none;
+}
+.team-members.full section.team-member ul.contact-info li i {
+  margin-right: 1em;
+}
+.single-team_member .team-sidebar {
+  float: left;
+  width: 33%;
+}
+.single-team_member ul.team-member-contact-info {
+  display: block;
+  margin: 1em 0;
+}
+.single-team_member ul.team-member-contact-info li {
+  list-style: none outside none;
+}
+.single-team_member ul.team-member-contact-info li i {
+  margin-right: 1em;
 }
 .nav-responsive ul,
 .nav-responsive li,

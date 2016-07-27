@@ -238,12 +238,12 @@ if (!class_exists('MSDTeamDisplay')) {
             <ul class="team-member-contact-info">
                 <?php $contact_info_metabox->the_field('_team_phone'); ?>
                 <?php if($contact_info_metabox->get_the_value() != ''){ ?>
-                    <li class="phone"><i class="fa fa-phone"></i> <?php //print msd_str_fmt($contact_info_metabox->get_the_value(),'phone'); ?></li>
+                    <li class="phone"><i class="fa fa-phone"></i> <?php print msd_str_fmt($contact_info_metabox->get_the_value(),'phone'); ?></li>
                 <?php } ?>
                 
                 <?php $contact_info_metabox->the_field('_team_mobile'); ?>
                 <?php if($contact_info_metabox->get_the_value() != ''){ ?>
-                    <li class="mobile"><i class="fa fa-mobile-phone"></i> <?php //print msd_str_fmt($contact_info_metabox->get_the_value(),'phone'); ?></li>
+                    <li class="mobile"><i class="fa fa-mobile-phone"></i> <?php print msd_str_fmt($contact_info_metabox->get_the_value(),'phone'); ?></li>
                 <?php } ?>
                 
                 <?php $contact_info_metabox->the_field('_team_linked_in'); ?>
