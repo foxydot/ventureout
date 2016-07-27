@@ -8529,6 +8529,25 @@ section.headshot.alignleft {
 .single-team_member ul.team-member-contact-info li i {
   margin-right: 1em;
 }
+.page.testimonials .msdlab_testimonial_gallery > div {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+0) {
+  color: #00a9e0;
+}
+.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+1) {
+  color: #b5bd00;
+}
+.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+2) {
+  color: #ffcd00;
+}
+.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+3) {
+  color: #776e64;
+}
+.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+4) {
+  color: #F16528;
+}
 .nav-responsive ul,
 .nav-responsive li,
 .nav-responsive li a {
