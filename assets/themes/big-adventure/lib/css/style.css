@@ -8519,6 +8519,14 @@ section.headshot.alignleft {
   margin-right: 2em;
   margin-bottom: 0.5em;
 }
+.team-members.full section.team-member {
+  display: block;
+  margin-bottom: 2em;
+}
+.team-members.full section.team-member div.headshot {
+  float: left;
+  margin-right: 2em;
+}
 .nav-responsive ul,
 .nav-responsive li,
 .nav-responsive li a {
