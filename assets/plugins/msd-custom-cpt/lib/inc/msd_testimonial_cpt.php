@@ -172,20 +172,22 @@ if (!class_exists('MSDTestimonialCPT')) {
             $ret = false;
             foreach($testimonials AS $testimonial){
                 $testimonial_info->the_meta($testimonial->ID);
-                $badge = has_term( 'law-enforcement', 'testimonial_type', $testimonial->ID )?' <i class="badge-icon"></i>':'';
                 $quote = apply_filters('the_content',$testimonial_info->get_the_value('quote'));
                 if($length){
                     $quote = self::msd_trim_quote($quote,$length,get_the_permalink($testimonial->ID));
                 }
                 $thumbnail = has_post_thumbnail($testimonial->ID)?get_the_post_thumbnail($testimonial->ID,array(90,90)):'';
-                $name = $testimonial_info->get_the_value('attribution')!=''?'<span class="name">'.$testimonial_info->get_the_value('attribution').',</span> ':'';
-                $position = $testimonial_info->get_the_value('position')!=''?'<span class="position">'.$testimonial_info->get_the_value('position').',</span> ':'';
-                $organization = $testimonial_info->get_the_value('organization')!=''?'<span class="organization">'.$testimonial_info->get_the_value('organization').'</span> ':'';
+                $comma = (($testimonial_info->get_the_value('attribution')!='') && ($testimonial_info->get_the_value('position')!='' || $testimonial_info->get_the_value('organization') || $testimonial_info->get_the_value('location')!=''))?',':'';
+                $name = $testimonial_info->get_the_value('attribution')!=''?'<span class="name">'.$testimonial_info->get_the_value('attribution').$comma.'</span> ':'';
+                $comma = (($testimonial_info->get_the_value('attribution')!='' || $testimonial_info->get_the_value('position')!='') && ($testimonial_info->get_the_value('organization') || $testimonial_info->get_the_value('location')!=''))?',':'';
+                $position = $testimonial_info->get_the_value('position')!=''?'<span class="position">'.$testimonial_info->get_the_value('position').$comma.'</span> ':'';
+                $comma = (($testimonial_info->get_the_value('attribution')!='' || $testimonial_info->get_the_value('position')!='' || $testimonial_info->get_the_value('organization') ) && ($testimonial_info->get_the_value('location')!=''))?',':'';
+                $organization = $testimonial_info->get_the_value('organization')!=''?'<span class="organization">'.$testimonial_info->get_the_value('organization').$comma.'</span> ':'';
                 $location = $testimonial_info->get_the_value('location')!=''?'<span class="location">'.$testimonial_info->get_the_value('location').'</span> ':'';
                 $bootstrap = $slideshow?'':'col-md-'. 12/$columns .' col-xs-12 ';
                 $testimonial_array[] .= '<div class="'.$bootstrap.'item-wrapper">
                 <div class="quote">'.$quote.'</div>
-                <div class="attribution">'.$name.$position.$organization.$location.$badge.'</div>
+                <div class="attribution">'.$name.$position.$organization.$location.'</div>
                 </div>';
             }
             if($slideshow){

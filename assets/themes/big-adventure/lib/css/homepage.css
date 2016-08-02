@@ -5471,17 +5471,18 @@ td.visible-print {
   line-height: 1;
 }
 .sectioned-page-wrapper .section.section-programs {
-  margin-top: -2em;
+  margin: -4em auto 0;
+  max-width: 1300px;
   background-position: right top;
   background-size: 70%;
-  padding: 2em 0 0;
+  padding: 4em 0 0;
 }
 .sectioned-page-wrapper .section.section-programs .section-title h3 {
   text-align: left;
   color: #776e64;
 }
 .sectioned-page-wrapper .section.section-programs .section-body .wrap .row .section-content {
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-align: left;
 }
 .sectioned-page-wrapper .section.section-development {
@@ -5602,15 +5603,32 @@ td.visible-print {
   color: #00a9e0;
 }
 .sectioned-page-wrapper .section.section-testimonials {
-  background-position: top right;
+  background-color: #00a9e0;
+  background-image: url(../img/bkg-planks-10-8bit.png);
+  background-repeat: repeat;
+  background-position: center top;
 }
 .sectioned-page-wrapper .section.section-testimonials .section-title h3 {
   font-weight: 700;
 }
+.sectioned-page-wrapper .section.section-testimonials .section-body .wrap {
+  padding: 0;
+}
 .sectioned-page-wrapper .section.section-testimonials .section-body .wrap .row .section-content {
   text-align: left;
   color: #FFF;
-  font-size: 0.8em;
+}
+.sectioned-page-wrapper .section.section-testimonials .section-body .wrap .row .section-content.column-1 img {
+  margin: 0;
+}
+.sectioned-page-wrapper .section.section-testimonials .section-body .wrap .row .section-content.column-2 {
+  padding: 1em 0;
+}
+.sectioned-page-wrapper .section.section-testimonials .section-body .wrap .row .section-content.column-2 .msdlab_testimonial_gallery .item-wrapper {
+  margin-bottom: 2em;
+}
+.sectioned-page-wrapper .section.section-testimonials .section-body .wrap .row .section-content.column-2 .msdlab_testimonial_gallery .item-wrapper .quote {
+  font-weight: 600;
 }
 @media only screen and (max-width: 980px) {
   nav.homepage-top .menu li a {
