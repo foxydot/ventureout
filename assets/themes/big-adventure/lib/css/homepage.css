@@ -5505,6 +5505,9 @@ td.visible-print {
   color: #FFF;
   text-decoration: none;
 }
+.sectioned-page-wrapper .section.section-key-elements {
+  display: none;
+}
 .sectioned-page-wrapper .section.section-key-elements .section-body .wrap .row .section-content.column-2 {
   padding: 3em 0;
 }
