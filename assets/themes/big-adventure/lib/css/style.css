@@ -8548,6 +8548,10 @@ section.headshot.alignleft {
 .page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+4) {
   color: #F16528;
 }
+span.ventureout {
+  font-weight: 600;
+  font-size: 1.2em;
+}
 .nav-responsive ul,
 .nav-responsive li,
 .nav-responsive li a {
