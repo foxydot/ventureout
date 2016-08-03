@@ -5500,6 +5500,10 @@ td.visible-print {
   padding: 0.2em;
   margin-bottom: 0.2em;
 }
+.sectioned-page-wrapper .section.section-development .section-body .wrap .row .section-content a,
+.sectioned-page-wrapper .section.section-development .section-body .wrap .row .section-content a:hover {
+  color: #FFF;
+}
 .sectioned-page-wrapper .section.section-key-elements .section-body .wrap .row .section-content.column-2 {
   padding: 3em 0;
 }
