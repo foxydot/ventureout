@@ -8536,7 +8536,7 @@ section.headshot.alignleft {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+0) {
+.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+4) {
   color: #00a9e0;
 }
 .page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+1) {
