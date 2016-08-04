@@ -28,6 +28,7 @@ function msdlab_do_social_footer(){
     print '<div class="row">';    
     print '<div class="social">'.$copyright.' '.$address.'</div>';
     print '<nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
+    print do_shortcode('[msd-social]');
     print '</div>';
     print '<div class="backtotop"><a href="#sticky-wrapper"><i class="fa fa-angle-up"></i></a></div>';
 }

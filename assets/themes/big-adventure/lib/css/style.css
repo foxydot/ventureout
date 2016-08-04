@@ -8084,6 +8084,9 @@ Site Footer
   font-size: 2em;
   line-height: 1;
 }
+.site-footer .social-media {
+  float: none;
+}
 .page-template-page-sectioned .site-container .site-inner {
   background: transparent;
   padding: 0;
