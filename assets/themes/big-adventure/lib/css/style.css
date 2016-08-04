@@ -8543,13 +8543,10 @@ section.headshot.alignleft {
   color: #b5bd00;
 }
 .page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+2) {
-  color: #ffcd00;
+  color: #F16528;
 }
 .page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+3) {
   color: #776e64;
-}
-.page.testimonials .msdlab_testimonial_gallery > div:nth-child(5n+4) {
-  color: #F16528;
 }
 span.ventureout {
   font-weight: 600;
